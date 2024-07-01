@@ -1,0 +1,52 @@
+import random
+
+uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+lowercase = "abcdefghijklmnopqrstuvwxyz"
+digits = "123456789"
+character = "!#$%&()*+,-./:;<=>?@[]^_`{|}~"
+all = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!#$%&()*+,-./:;<=>?@[]^_`{|}~"
+
+def passs(lenofpass,upcs,locs,dig,char):
+    e = True
+    if (upcs+locs+dig+char)>lenofpass:
+        print("Crossing limit of Password")
+        e = False
+    newpas = ''
+    
+    if upcs>=0 and upcs<=lenofpass:
+        for i in range(0,upcs):
+            newpas += random.choice(uppercase)
+        lenofpass -= upcs
+        
+            
+    if locs>=0 and locs<=lenofpass:
+        for i in range(0,locs):
+            newpas += random.choice(lowercase)
+        lenofpass -= locs
+        
+            
+    if char>=0 and char<=lenofpass:
+        for i in range(0,char):
+            newpas += random.choice(character)
+        lenofpass -= char
+        
+            
+    if dig>=0 and dig<=lenofpass:
+        for i in range(0,dig):
+            newpas += random.choice(digits)
+        lenofpass -= dig
+
+    if lenofpass != 0:
+        for i in range(0,lenofpass):
+            newpas += random.choice(all)
+    
+    if e == True:
+        print(newpas)
+
+lenofpass = int(input("Enter Length of password: "))
+upcs = int(input("How many UPPERCASE letters do you want?"))
+locs = int(input("How many lowercase letters do you want?"))
+dig = int(input("How many Digits do you want?"))
+char = int(input("How many Character do you want?"))
+
+passs(lenofpass,upcs,locs,dig,char)
